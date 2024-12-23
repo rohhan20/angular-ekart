@@ -1,0 +1,7 @@
+<div class="ekart--product--container">
+    <app-search (searchChanged)="onSearch($event)"></app-search>
+    <product-list [searchText]="searchText" #productListComponent></product-list>
+    @if(productListComponent.selectedProduct){<product-detail></product-detail>}
+</div>
+<!-- <input (input)="onNameChange($event)">
+<p>{{name}}</p> -->
