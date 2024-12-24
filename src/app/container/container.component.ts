@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SearchComponent } from "./search/search.component";
 import { ProductListComponent } from "./product-list/product-list.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
+import { Product } from '../Models/Product';
 
 @Component({
   selector: 'app-container',
@@ -16,4 +17,6 @@ export class ContainerComponent {
     console.log("searching for" + text);
     this.searchText = text;
   }
+
+  @ViewChild(ProductListComponent, {static: true}) productListComponent: ProductListComponent;
 }

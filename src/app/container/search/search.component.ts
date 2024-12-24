@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, Output, EventEmitter} from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({ 
@@ -13,8 +13,9 @@ export class SearchComponent {
 
   @Output()
   searchChanged: EventEmitter<string> = new EventEmitter<string>();
+  @ViewChild('searchInput', {static: true}) inputEl: ElementRef;
 
-  onSearch(inputElement: HTMLInputElement){
-    this.searchChanged.emit(inputElement.value);
+  onSearch(){
+    this.searchChanged.emit(this.inputEl.nativeElement.value);
   }
 }
