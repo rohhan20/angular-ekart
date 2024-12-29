@@ -11,9 +11,9 @@
             <h2>{{product.name}}</h2>
         </div>
         <div class="ekart-product-detail-gbc">
-            <span>{{product.gender}}</span>
-            <span>{{product.brand}}</span>
-            <span>{{product.category}}</span>
+            <span setBackground>{{product.gender}}</span>
+            <span setBackground>{{product.brand}}</span>
+            <span setBackground>{{product.category}}</span>
         </div>
         <div class="ekart-product-detail-price">
             <p>
@@ -53,8 +53,17 @@
             </div>                
         </div>
     </div>
-    <div class="ekart-product-detail-addtoCart">
-        <button class="btn-add-to-cart">ADD TO CART</button>
-    </div>
+    @if(product.is_in_inventory) {
+        <div class="ekart-product-detail-addtoCart">
+            <button class="btn-add-to-cart" appHover>ADD TO CART</button>
+        </div>
+    }@else {<div *ngTemplateOutlet="notifyButton"></div>}
 </div>
 <div class="overlay"></div>
+
+<ng-template #notifyButton>
+    <div class="ekart-product-detail-addtoCart">
+        <button class="btn-add-to-cart">Notify Me</button>
+    </div>
+</ng-template>
+
